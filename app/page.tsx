@@ -1,20 +1,20 @@
 'use client';
 
-import {AppShell, Button, ScrollArea} from '@mantine/core';
-import {useDisclosure} from '@mantine/hooks';
+import { AppShell, Button, ScrollArea } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 
 export default function CollapseDesktop() {
-  const [mobileOpened, {toggle: toggleMobile}] = useDisclosure();
-  const [desktopOpened, {toggle: toggleDesktop}] = useDisclosure(true);
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
   return (
     <AppShell
-      padding="md"
-      header={{height: 60}}
+      padding='md'
+      header={{ height: 60 }}
       navbar={{
         width: 300,
         breakpoint: 'sm',
-        collapsed: {mobile: !mobileOpened, desktop: !desktopOpened},
+        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
       }}
       transitionDuration={200}
       transitionTimingFunction='ease'
