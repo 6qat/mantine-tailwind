@@ -125,14 +125,16 @@ export default function DoubleNavbar() {
           <Title
             order={4}
             className={cn(
-              classes.title,
-              'mb-8 h-[60px] border-b border-[var(--mantine-color-gray-3)] bg-[var(--mantine-color-body)] p-4 pt-[18px] dark:border-b-[var(--mantine-color-red-8)]'
+              // classes.title,
+              'mb-8 h-[60px] border-b border-[var(--mantine-color-gray-3)] bg-[var(--mantine-color-body)] p-4 pt-[18px] font-sans dark:border-b-[var(--mantine-color-red-8)]'
             )}
           >
             {/*<Title order={4} className={classes.title}>*/}
             {active}
           </Title>
-          <Button onClick={toggleColorScheme}>Color Mode</Button>
+          <Button variant='filled' onClick={toggleColorScheme}>
+            Color Mode
+          </Button>
           {links}
         </div>
       </div>
