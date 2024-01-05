@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { UnstyledButton, Tooltip, Title, rem } from '@mantine/core';
+import { UnstyledButton, Tooltip, Title, rem, useMantineColorScheme, Button } from '@mantine/core';
 import {
   IconHome2,
   IconGauge,
@@ -13,6 +13,7 @@ import {
 } from '@tabler/icons-react';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './page.module.scss';
+import { cn } from '@/lib/utils';
 
 const mainLinksMockdata = [
   {
@@ -63,6 +64,15 @@ export default function DoubleNavbar() {
   const [active, setActive] = useState('Releases');
   const [activeLink, setActiveLink] = useState('Settings');
 
+  const { setColorScheme, clearColorScheme, colorScheme } = useMantineColorScheme();
+  const toggleColorScheme = () => {
+    if (colorScheme === 'dark') {
+      setColorScheme('light');
+    } else {
+      setColorScheme('dark');
+    }
+  };
+
   const mainLinks = mainLinksMockdata.map((link) => (
     <Tooltip
       label={link.label}
@@ -112,10 +122,17 @@ export default function DoubleNavbar() {
           {mainLinks}
         </div>
         <div className={classes.main}>
-          <Title order={4} className={classes.title}>
+          <Title
+            order={4}
+            className={cn(
+              classes.title,
+              'mb-8 h-[60px] border-b border-[var(--mantine-color-gray-3)] bg-[var(--mantine-color-body)] p-4 pt-[18px] dark:border-b-[var(--mantine-color-red-8)]'
+            )}
+          >
+            {/*<Title order={4} className={classes.title}>*/}
             {active}
           </Title>
-
+          <Button onClick={toggleColorScheme}>Color Mode</Button>
           {links}
         </div>
       </div>
