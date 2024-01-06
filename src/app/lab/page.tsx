@@ -10,6 +10,7 @@ import {
   IconCalendarStats,
   IconUser,
   IconSettings,
+  IconAt,
 } from '@tabler/icons-react';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './page.module.scss';
@@ -112,6 +113,9 @@ export default function DoubleNavbar() {
     </a>
   ));
 
+  const gradient =
+    'linear-gradient(45deg, var(--mantine-color-pink-filled) 0%, var(--mantine-color-orange-filled) 50%, var(--mantine-color-yellow-filled) 100%)';
+
   return (
     <nav className={classes.navbar}>
       <div className={classes.wrapper}>
@@ -132,8 +136,37 @@ export default function DoubleNavbar() {
             {/*<Title order={4} className={classes.title}>*/}
             {active}
           </Title>
-          <Button variant='filled' onClick={toggleColorScheme}>
+          <Button
+            // disabled
+            // data-disabled
+            // loading
+            // loaderProps={{ type: 'bars' }}
+            variant='gradient'
+            gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
+            size='compact-sm'
+            onClick={toggleColorScheme}
+          >
             Color Mode
+          </Button>
+          <Button
+            variant='outline'
+            size='compact-sm'
+            leftSection={<IconAt style={{ width: rem(16), height: rem(16) }} />}
+            classNames={{
+              root: 'border-2 dark:border-yellow-500 bg-[var(--mantine-color-red-2)] dark:bg-[var(--mantine-color-green-2)]',
+              section: '',
+              loader: '',
+              inner: '',
+              label: '',
+            }}
+            styles={
+              {
+                // root: { backgroundColor: 'var(--mantine-color-red-1)' },
+                // root: { backgroundImage: gradient },
+              }
+            }
+          >
+            Your email
           </Button>
           {links}
         </div>
