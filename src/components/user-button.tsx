@@ -1,13 +1,11 @@
 import { UnstyledButton, Group, Avatar, Text, rem } from '@mantine/core';
 import { IconChevronRight } from '@tabler/icons-react';
-import classes from './index.module.scss';
 import { cn } from '@/lib/utils';
 
 export function UserButton() {
   return (
     <UnstyledButton
       className={cn(
-        classes.user,
         'hover:bg-[var(--mantine-color-gray-0)] dark:hover:bg-[var(--mantine-color-dark-8)]',
         'text-[var(--mantine-color-black)] dark:text-[var(--mantine-color-dark-0)]',
         'block w-full p-[var(--mantine-spacing-md)]'

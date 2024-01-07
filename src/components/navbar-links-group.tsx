@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, rem } from '@mantine/core';
-import { IconCalendarStats, IconChevronRight } from '@tabler/icons-react';
-import classes from './index.module.css';
+import { Box, Collapse, Group, rem, Text, ThemeIcon, UnstyledButton } from '@mantine/core';
+import { IconChevronRight } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 
 interface LinksGroupProps {
@@ -14,11 +13,11 @@ interface LinksGroupProps {
 export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksGroupProps) {
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
+
   const items = (hasLinks ? links : []).map((link) => (
-    <Text<'a'>
+    <Text
       component='a'
       className={cn(
-        classes.link,
         'hover:bg-[var(--mantine-color-gray-0)] dark:hover:bg-[var(--mantine-color-dark-7)]',
         'hover:text-[var(--mantine-color-black)] hover:dark:text-[var(--mantine-color-dark-0)]',
         'text-[var(--mantine-color-gray-7)] dark:text-[var(--mantine-color-dark-0)]',
@@ -40,7 +39,6 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
       <UnstyledButton
         onClick={() => setOpened((o) => !o)}
         className={cn(
-          classes.control,
           'hover:bg-[var(--mantine-color-gray-0)] dark:hover:bg-[var(--mantine-color-dark-7)]',
           'hover:text-[var(--mantine-color-black)] hover:dark:text-[var(--mantine-color-dark-0)]',
           'font-[var(--mantine-font-size-sm)]',
@@ -58,7 +56,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
           </Box>
           {hasLinks && (
             <IconChevronRight
-              className={cn(classes.chevron, 'transition-transform duration-200 ease-in-out')}
+              className={cn('transition-transform duration-200 ease-in-out')}
               stroke={1.5}
               style={{
                 width: rem(16),
@@ -74,20 +72,20 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
   );
 }
 
-const mockdata = {
-  label: 'Releases',
-  icon: IconCalendarStats,
-  links: [
-    { label: 'Upcoming releases', link: '/' },
-    { label: 'Previous releases', link: '/' },
-    { label: 'Releases schedule', link: '/' },
-  ],
-};
-
-export function NavbarLinksGroup() {
-  return (
-    <Box mih={220} p='md'>
-      <LinksGroup {...mockdata} />
-    </Box>
-  );
-}
+// const mockdata = {
+//   label: 'Releases',
+//   icon: IconCalendarStats,
+//   links: [
+//     { label: 'Upcoming releases', link: '/' },
+//     { label: 'Previous releases', link: '/' },
+//     { label: 'Releases schedule', link: '/' },
+//   ],
+// };
+//
+// export function NavbarLinksGroup() {
+//   return (
+//     <Box mih={220} p='md'>
+//       <LinksGroup {...mockdata} />
+//     </Box>
+//   );
+// }

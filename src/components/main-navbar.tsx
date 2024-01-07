@@ -12,7 +12,6 @@ import {
 } from '@tabler/icons-react';
 import { UserButton } from './user-button';
 import { LinksGroup } from './navbar-links-group';
-import classes from './main-navbar.module.scss';
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -58,7 +57,7 @@ const MainNavbar = ({ className }: { className?: string }) => {
   return (
     <nav
       className={cn(
-        classes.navbar,
+        'guiga-navbar',
         className,
         'border-0 border-r border-solid border-[var(--mantine-color-gray-3)] dark:border-[var(--mantine-color-dark-4)]',
         'bg-[var(--mantine-color-white)] dark:bg-[var(--mantine-color-dark-6)]',
@@ -68,7 +67,7 @@ const MainNavbar = ({ className }: { className?: string }) => {
     >
       <div
         className={cn(
-          classes.header,
+          'guiga-header',
           '-mx-4 p-4 pt-0',
           'text-[var(--mantine-color-black)] dark:text-[var(--mantine-color-white)]',
           'border-0 border-b border-solid border-[var(--mantine-color-gray-3)] dark:border-[var(--mantine-color-dark-4)]'
@@ -82,14 +81,14 @@ const MainNavbar = ({ className }: { className?: string }) => {
 
       <ScrollArea
         className={cn(
-          classes.links,
+          'guiga-links',
           'grow',
-          'ml-[calc(var(--mantine-spacing-md) * -1)] mr-[calc(var(--mantine-spacing-md) * -1)]'
+          'ml-[calc(var(--mantine-spacing-md)*-1)] mr-[calc(var(--mantine-spacing-md)*-1)]'
         )}
       >
         <div
           className={cn(
-            classes.linksInner,
+            'guiga-linksInner',
             'pb-[var(--mantine-spacing-xl)] pt-[var(--mantine-spacing-xl)]'
           )}
         >
@@ -99,8 +98,8 @@ const MainNavbar = ({ className }: { className?: string }) => {
 
       <div
         className={cn(
-          classes.footer,
-          'ml-[calc(var(--mantine-spacing-md) * -1], mr[calc(var(--mantine-spacing-md) * -1]',
+          'guiga-footer',
+          'ml-[calc(var(--mantine-spacing-md)*-1)] mr-[calc(var(--mantine-spacing-md)*-1)]',
           'border-0 border-t border-solid border-[var(--mantine-color-gray-3)] dark:border-[var(--mantine-color-dark-4)]'
         )}
       >
