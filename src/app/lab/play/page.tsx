@@ -1,40 +1,66 @@
 'use client';
 
-import { AppShell, Button, ScrollArea } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import MyIcons from '@/app/lab/play/myIcons';
+import { Button, Divider, useMantineColorScheme, Text } from '@mantine/core';
+import React, { useEffect, useState } from 'react';
+import MyCenter from '@/app/lab/play/my-center';
+import * as stylex from '@stylexjs/stylex';
 
-export default function CollapseDesktop() {
-  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
-  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+const styles = stylex.create({
+  base: {
+    ':hover': {
+      backgroundColor: 'rebeccapurple',
+    },
+  },
+});
+
+const gradient =
+  'linear-gradient(45deg, var(--mantine-color-pink-filled) 0%, var(--mantine-color-orange-filled) 50%, var(--mantine-color-yellow-filled) 100%)';
+
+const textStyles = stylex.create({
+  root: {
+    backgroundImage: gradient,
+    marginTop: 'calc(calc(var(--text-lh)-var(--text-fz))/2)',
+  },
+});
+
+export default function PlayPage() {
+  const { setColorScheme, clearColorScheme, colorScheme } = useMantineColorScheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  let toggleColorScheme = () => {
+    if (colorScheme === 'dark') {
+      clearColorScheme();
+    } else {
+      setColorScheme('dark');
+    }
+  };
 
   return (
-    <AppShell
-      padding='md'
-      header={{ height: 60 }}
-      navbar={{
-        width: 300,
-        breakpoint: 'sm',
-        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
-      }}
-      transitionDuration={200}
-      transitionTimingFunction='ease'
-    >
-      <AppShell.Header>Header</AppShell.Header>
-      <AppShell.Navbar>
-        <AppShell.Section>Navbar header</AppShell.Section>
-        <AppShell.Section grow component={ScrollArea}>
-          Navbar main section, it will
-        </AppShell.Section>
-        <AppShell.Section>Navbar footer – always at the bottom</AppShell.Section>
-      </AppShell.Navbar>
-      <AppShell.Main>
-        <Button onClick={toggleDesktop} visibleFrom='sm'>
-          Toggle navbar
-        </Button>
-        <Button onClick={toggleMobile} hiddenFrom='sm'>
-          Toggle navbar
-        </Button>
-      </AppShell.Main>
-    </AppShell>
+    <>
+      <Button {...stylex.props(styles.base)} onClick={toggleColorScheme}>
+        Color Scheme: {mounted ? colorScheme : ''}{' '}
+      </Button>
+      <Divider />
+      <Text
+        lightHidden
+        size='xl'
+        fw={900}
+        classNames={{
+          root: { ...stylex.props(textStyles.root) }.className,
+        }}
+      >
+        Gradient Text
+      </Text>
+      <Text>{JSON.stringify({ ...stylex.props(textStyles.root) })}</Text>
+      <Divider />
+      <MyCenter />
+      <Divider />
+      <MyIcons />
+    </>
   );
 }

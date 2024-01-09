@@ -1,10 +1,20 @@
-@layer tailwind-base, mantine, tailwind-utilities;
+@layer  tailwind-base, mantine, tailwind-components,  tailwind-utilities ;
 
 @layer tailwind-base {
-  @tailwind base;
+    @tailwind base;
+}
+
+@layer tailwind-components {
+    @tailwind components;
 }
 
 @layer tailwind-utilities {
-  @tailwind components;
-  @tailwind utilities;
+    /*@tailwind components;*/
+    @tailwind utilities;
 }
+
+/*@import "tailwindcss/base";*/
+/*@import "@radix-ui/themes/styles.css";*/
+
+/*@tailwind components;*/
+/*@tailwind utilities;*/
